@@ -22,8 +22,19 @@ async function run(){
             const allTask = req.body
             console.log(allTask)
             const result = await taskCollection.insertOne(allTask);
-            res.send(result)
-        })
+            res.send(result) 
+            })
+
+            app.get('/myTask', async (req, res)=> {
+                const email = req.query.email
+                const query = {
+                    userEmail : email
+                };
+                const result = await taskCollection.find(query).toArray();
+                res.send(result)
+            })
+
+
 
 
         }
