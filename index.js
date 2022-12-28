@@ -17,6 +17,14 @@ async function run(){
         try{
             const taskCollection = client.db('myTask').collection('allTask')
 
+            // add task to database api 
+            app.post('/allTask', async(req, res)=> {
+            const allTask = req.body
+            console.log(allTask)
+            const result = await taskCollection.insertOne(allTask);
+            res.send(result)
+        })
+
 
         }
         finally{
