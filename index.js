@@ -25,6 +25,7 @@ async function run(){
             res.send(result) 
             })
 
+
             // load user specific task 
             app.get('/myTask', async (req, res)=> {
                 const email = req.query.email
@@ -37,7 +38,7 @@ async function run(){
                 res.send(result)
             })
 
-
+            // delete task from database 
             app.delete('/myTask/:id', async (req, res)=> {
                 const id = req.params.id
                 console.log(id)
@@ -61,7 +62,6 @@ async function run(){
                     const result = await taskCollection.updateOne(filter, updatedDoc, option)
             res.send(result);
         })
-
 
 
 
